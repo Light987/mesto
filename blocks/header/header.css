@@ -1,0 +1,6 @@
+.header {
+    display: grid;
+    max-width: 880px;
+    margin: 45px auto 0;
+    gap: 41px;
+}
