@@ -1,10 +1,10 @@
 .element__like {
-  position: absolute;
   background-image: url(../../../images/like.svg);
   background-color: rgba(0, 0, 0, 0);
   background-size: cover;
-  bottom: 34px;
-  right: 30px;
+  margin: 30px 20px 30px 0;
+  /*bottom: 34px;*/
+  /*right: 30px;*/
   width: 22px;
   height: 19px;
   border: 0;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="page/index.css">
+    <link rel="stylesheet" href="pages/index.css">
     <title>Место</title>
     <meta name="description" content="Яндекс.Практикум - Спринт 4">
     <meta name="keywords" content="HTML5, CSS, JavaScript">
@@ -20,63 +20,66 @@
         <div class="profile-info">
             <h1 class="profile-info__name">Жак-Ив Кусто</h1>
             <p class="profile-info__about">Исследователь океана</p>
-            <button type="button" class="profile-info__edit-button"></button>
+            <button type="reset" class="profile-info__edit-button"></button>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="reset" class="profile__add-button"></button>
     </section>
     <section class="elements">
-        <div class="element">
-            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск"
-                 class="element__image">
-            <h2 class="element__title">Карачаевск</h2>
-            <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-            <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус"
-                 class="element__image">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай"
-                 class="element__image">
-            <h2 class="element__title">Домбай</h2>
-            <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-            <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус"
-                 class="element__image">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай"
-                 class="element__image">
-            <h2 class="element__title">Домбай</h2>
-            <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск"
-                 class="element__image">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button type="button" class="element__like"></button>
-        </div>
+        <ul class="elements__list">
+            <li class="element">
+                <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск"
+                     class="element__image">
+                <h2 class="element__title">Карачаевск</h2>
+                <button type="button" class="element__like"></button>
+            </li>
+            <li class="element">
+                <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус"
+                     class="element__image">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <button type="button" class="element__like"></button>
+            </li>
+            <li class="element">
+                <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай"
+                     class="element__image">
+                <h2 class="element__title">Домбай</h2>
+                <button type="button" class="element__like"></button>
+            </li>
+            <li class="element">
+                <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус"
+                     class="element__image">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <button type="button" class="element__like"></button>
+            </li>
+            <li class="element">
+                <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай"
+                     class="element__image">
+                <h2 class="element__title">Домбай</h2>
+                <button type="button" class="element__like"></button>
+            </li>
+            <li class="element">
+                <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск"
+                     class="element__image">
+                <h2 class="element__title">Карачаево-Черкесия</h2>
+                <button type="button" class="element__like"></button>
+            </li>
+        </ul>
     </section>
-    <section class="popup">
-        <form name="form" class="popup__form">
-            <h2 class="popup__header">Редактировать профиль</h2>
-            <input type="text" name="name" placeholder="Имя" class="popup__field" required>
-            <input type="text" name="about" placeholder="Описание" class="popup__field"
-                   required>
-            <button type="submit" class="popup__submit-button">Сохранить</button>
-        </form>
-        <button type="button" class="popup__close-button"></button>
-        <div class="popup__overlay"></div>
-    </section>
-    <footer class="footer">
-        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-    </footer>
 </main>
+<footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+</footer>
+<div class="popup">
+    <form name="form" class="popup__form">
+        <h2 class="popup__header">Редактировать профиль</h2>
+        <input type="text" name="name" placeholder="Имя" class="popup__field" required>
+        <div class="popup__line"></div>
+        <input type="text" name="about" placeholder="Описание" class="popup__field" required>
+        <div class="popup__line"></div>
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+    </form>
+    <button type="button" class="popup__close-button"></button>
+    <div class="popup__overlay"></div>
+</div>
 <script src="scripts/script.js"></script>
 </body>
 </html>

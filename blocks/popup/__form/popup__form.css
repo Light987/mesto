@@ -1,8 +1,7 @@
 .popup__form {
     position: relative;
     display: flex;
-    width: 430px;
-    height: 330px;
+    /*width: 430px;*/
     right: -16px;
     flex-direction: column;
     background-color: #fff;

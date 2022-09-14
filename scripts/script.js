@@ -12,7 +12,7 @@ let closeButton = popup.querySelector('.popup__close-button');
 
 // функция открытия попап
 function openPopup() {
-    popup.classList.add('popup__opened')
+    popup.classList.add('popup_opened')
     console.log(popup)
 
     inputs[0].value = profileName.textContent
@@ -25,7 +25,7 @@ editButton.addEventListener('click', openPopup)
 
 // функция закрытия попап
 function closePopup() {
-    popup.classList.remove('popup__opened')
+    popup.classList.remove('popup_opened')
 }
 
 closeButton.addEventListener('click', closePopup)
@@ -37,9 +37,6 @@ function formSubmit(evt) {
 
     profileName.textContent = inputs[0].value
     profileAbout.textContent = inputs[1].value
-
-    // вызов функции закрытия
-    closePopup()
 }
 
 // вызов функции сохранения

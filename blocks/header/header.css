@@ -4,3 +4,11 @@
     margin: 45px auto 0;
     gap: 41px;
 }
+
+
+@media screen and (max-width: 580px) {
+    .header {
+        gap: 30.61px;
+        margin-top: 28px;
+    }
+}
