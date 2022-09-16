@@ -1,12 +1,9 @@
 .element {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  max-height: 361px;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
 }

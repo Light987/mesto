@@ -2,7 +2,8 @@
     position: relative;
     display: flex;
     align-items: stretch;
-    min-width: 388px;
+    min-width: 430px;
+    box-sizing: border-box;
     right: -16px;
     flex-direction: column;
     background-color: #fff;
@@ -15,7 +16,7 @@
 
 @media screen and (max-width: 580px) {
     .popup__form {
-        min-width: 238px;
+        min-width: 282px;
         right: -10px;
         padding: 25px 22px;
     }
