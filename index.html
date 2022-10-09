@@ -34,7 +34,7 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 </footer>
 
-<div class="popup">
+<div class="popup profile-popup">
     <form name="form" class="popup__form">
         <h2 class="popup__header">Редактировать профиль</h2>
         <input type="text" name="name" placeholder="Имя" class="popup__field" required>
@@ -47,18 +47,18 @@
     <div class="popup__overlay"></div>
 </div>
 
-<div class="popup-add">
-    <form name="form" class="popup-add__form">
-        <h2 class="popup-add__header">Новое место</h2>
-        <input type="text" name="name" placeholder="Название" class="popup-add__field" required>
-        <div class="popup-add__line"></div>
-        <input type="text" name="about" placeholder="Ссылка на картинку" class="popup-add__field"
+<div class="popup popup-add">
+    <form name="form" class="popup__form popup-add__form">
+        <h2 class="popup__header popup-add__header">Новое место</h2>
+        <input type="text" name="name" placeholder="Название" class="popup__field popup-add__field" required>
+        <div class="popup__line popup-add__line"></div>
+        <input type="text" name="about" placeholder="Ссылка на картинку" class="popup__field popup-add__field"
                required>
-        <div class="popup-add__line"></div>
-        <button type="submit" class="popup-add__submit-button">Создать</button>
+        <div class="popup__line popup-add__line"></div>
+        <button type="submit" class="popup__submit-button popup-add__submit-button">Создать</button>
     </form>
-    <button type="button" class="popup-add__close-button"></button>
-    <div class="popup-add__overlay"></div>
+    <button type="button" class="popup__close-button popup-add__close-button"></button>
+    <div class="popup__overlay popup-add__overlay"></div>
 </div>
 
 <template id="element">
@@ -72,13 +72,13 @@
 </template>
 
 
-<div class="popup-image">
+<div class="popup popup-image">
     <div class="popup-image__block">
         <img src="#" alt="#" class="popup-image__image">
         <h2 class="popup-image__text"></h2>
-        <button type="button" class="popup-image__close-button"></button>
+        <button type="button" class="popup__close-button popup-image__close-button"></button>
     </div>
-    <div class="popup-image__overlay"></div>
+    <div class="popup__overlay popup-image__overlay"></div>
 </div>
 
 

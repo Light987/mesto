@@ -1,28 +1,28 @@
 // определяем переменные
-let profile = document.querySelector('.profile')
-let profileInfo = profile.querySelector('.profile-info')
-let profileName = profileInfo.querySelector('.profile-info__name')
-let profileAbout = profileInfo.querySelector('.profile-info__about')
-let editButton = profileInfo.querySelector('.profile-info__edit-button')
-let popup = document.querySelector('.popup')
-let popupForm = popup.querySelector('.popup__form')
-let popupAdd = document.querySelector('.popup-add')
-let addPopupForm = popupAdd.querySelector('.popup-add__form')
-let inputs = popupForm.querySelectorAll('input');
-let inputsElement = addPopupForm.querySelectorAll('input');
-let saveButtonAdd = popupAdd.querySelector('.popup-add__submit-button');
-let closeButton = popup.querySelector('.popup__close-button');
-let closeButtonElement = popupAdd.querySelector('.popup-add__close-button');
+const profile = document.querySelector('.profile')
+const profileInfo = profile.querySelector('.profile-info')
+const profileName = profileInfo.querySelector('.profile-info__name')
+const profileAbout = profileInfo.querySelector('.profile-info__about')
+const editButton = profileInfo.querySelector('.profile-info__edit-button')
+const profilePopup = document.querySelector('.profile-popup')
+const popupForm = profilePopup.querySelector('.popup__form')
+const popupAdd = document.querySelector('.popup-add')
+const addPopupForm = popupAdd.querySelector('.popup-add__form')
+const inputs = popupForm.querySelectorAll('input');
+const inputsElement = addPopupForm.querySelectorAll('input');
+const saveButtonAdd = popupAdd.querySelector('.popup-add__submit-button');
+const closeButtonElement = popupAdd.querySelector('.popup-add__close-button');
+const closeButton = profilePopup.querySelector('.popup__close-button');
 
 
-let addElementButton = document.querySelector('.profile__add-button')
-let elementList = document.querySelector('.elements__list')
+const addElementButton = document.querySelector('.profile__add-button')
+const elementList = document.querySelector('.elements__list')
 
-let zoomImage = document.querySelector('.popup-image');
-let zoomCloseImage = zoomImage.querySelector('.popup-image__close-button');
+const zoomImage = document.querySelector('.popup-image');
+const zoomCloseImage = zoomImage.querySelector('.popup-image__close-button');
 
-let zoomPopupImage = zoomImage.querySelector('.popup-image__image');
-let zoomPopupTitle = zoomImage.querySelector('.popup-image__text');
+const zoomPopupImage = zoomImage.querySelector('.popup-image__image');
+const zoomPopupTitle = zoomImage.querySelector('.popup-image__text');
 
 
 const initialCards = [{
@@ -46,51 +46,39 @@ const initialCards = [{
 }];
 
 
-function addElement() {
-    popupAdd.classList.add('popup_opened')
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+};
+
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
 }
 
-addElementButton.addEventListener('click', addElement)
-
-function closePopupAdd() {
-    popupAdd.classList.remove('popup_opened')
-}
-
-closeButtonElement.addEventListener('click', closePopupAdd)
-saveButtonAdd.addEventListener('click', closePopupAdd)
-
-function closePopupImage() {
-    zoomImage.classList.remove('popup_opened')
-}
-
-zoomCloseImage.addEventListener('click', closePopupImage)
+addElementButton.addEventListener('click', () => openPopup(popupAdd))
+closeButtonElement.addEventListener('click', () => closePopup(popupAdd))
+zoomCloseImage.addEventListener('click', () => closePopup(zoomImage))
+closeButton.addEventListener('click', () => closePopup(profilePopup))
 
 
-function openPopup() {
-    popup.classList.add('popup_opened')
+function profileOpenPopup() {
+    openPopup(profilePopup);
 
     inputs[0].value = profileName.textContent
     inputs[1].value = profileAbout.textContent
 }
 
 
-editButton.addEventListener('click', openPopup)
+editButton.addEventListener('click', profileOpenPopup)
 
 
-function closePopup() {
-    popup.classList.remove('popup_opened')
-}
-
-closeButton.addEventListener('click', closePopup)
-
-function formSubmit(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault()
 
     profileName.textContent = inputs[0].value
     profileAbout.textContent = inputs[1].value
 }
 
-popupForm.addEventListener('submit', formSubmit)
+popupForm.addEventListener('submit', handleProfileFormSubmit)
 
 
 function createCard(link, name) {
@@ -116,7 +104,7 @@ function createCard(link, name) {
 
 
     elementImg.addEventListener('click', function () {
-        zoomImage.classList.add('popup_opened');
+        openPopup(zoomImage);
         zoomPopupImage.src = link;
         zoomPopupImage.alt = name;
         zoomPopupTitle.textContent = name;
@@ -130,12 +118,13 @@ initialCards.forEach((card) => {
 });
 
 
-function postElement(evt) {
+function handleElementFormSubmit(evt) {
     evt.preventDefault()
 
     const addElement = createCard(inputsElement[1].value, inputsElement[0].value);
     elementList.prepend(addElement);
+    closePopup(popupAdd);
 }
 
 
-addPopupForm.addEventListener('submit', postElement)
+addPopupForm.addEventListener('submit', handleElementFormSubmit)
