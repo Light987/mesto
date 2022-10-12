@@ -8,9 +8,10 @@ const profilePopup = document.querySelector('.profile-popup')
 const popupForm = profilePopup.querySelector('.popup__form')
 const popupAdd = document.querySelector('.popup-add')
 const addPopupForm = popupAdd.querySelector('.popup-add__form')
-const inputs = popupForm.querySelectorAll('input');
-const inputsElement = addPopupForm.querySelectorAll('input');
-const saveButtonAdd = popupAdd.querySelector('.popup-add__submit-button');
+const input_name = popupForm.querySelector('.popup__field_name');
+const input_about = popupForm.querySelector('.popup__field_about');
+const inputElementTitle = addPopupForm.querySelector('.popup-add__field_title');
+const inputElementLink = addPopupForm.querySelector('.popup-add__field_link');
 const closeButtonElement = popupAdd.querySelector('.popup-add__close-button');
 const closeButton = profilePopup.querySelector('.popup__close-button');
 
@@ -24,6 +25,7 @@ const zoomCloseImage = zoomImage.querySelector('.popup-image__close-button');
 const zoomPopupImage = zoomImage.querySelector('.popup-image__image');
 const zoomPopupTitle = zoomImage.querySelector('.popup-image__text');
 
+const elementTemplate = document.querySelector('#element').content;
 
 const initialCards = [{
     name: 'Архыз',
@@ -63,8 +65,8 @@ closeButton.addEventListener('click', () => closePopup(profilePopup))
 function profileOpenPopup() {
     openPopup(profilePopup);
 
-    inputs[0].value = profileName.textContent
-    inputs[1].value = profileAbout.textContent
+    input_name.value = profileName.textContent
+    input_about.value = profileAbout.textContent
 }
 
 
@@ -74,15 +76,14 @@ editButton.addEventListener('click', profileOpenPopup)
 function handleProfileFormSubmit(evt) {
     evt.preventDefault()
 
-    profileName.textContent = inputs[0].value
-    profileAbout.textContent = inputs[1].value
+    profileName.textContent = input_name.value
+    profileAbout.textContent = input_about.value
 }
 
 popupForm.addEventListener('submit', handleProfileFormSubmit)
 
 
 function createCard(link, name) {
-    const elementTemplate = document.querySelector('#element').content;
     const newItem = elementTemplate.cloneNode(true);
     const elementImg = newItem.querySelector('.element__image');
     const elementTitle = newItem.querySelector('.element__title');
@@ -121,7 +122,7 @@ initialCards.forEach((card) => {
 function handleElementFormSubmit(evt) {
     evt.preventDefault()
 
-    const addElement = createCard(inputsElement[1].value, inputsElement[0].value);
+    const addElement = createCard(inputElementTitle.value, inputElementLink.value);
     elementList.prepend(addElement);
     closePopup(popupAdd);
 }
