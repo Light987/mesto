@@ -10,8 +10,8 @@ const popupAdd = document.querySelector('.popup-add')
 const addPopupForm = popupAdd.querySelector('.popup-add__form')
 const input_name = popupForm.querySelector('.popup__field_name');
 const input_about = popupForm.querySelector('.popup__field_about');
-const inputElementTitle = addPopupForm.querySelector('.popup-add__field_title');
-const inputElementLink = addPopupForm.querySelector('.popup-add__field_link');
+const inputElementTitle = addPopupForm.querySelector('.popup-add__title');
+const inputElementLink = addPopupForm.querySelector('.popup-add__link');
 const closeButtonElement = popupAdd.querySelector('.popup-add__close-button');
 const closeButton = profilePopup.querySelector('.popup__close-button');
 
