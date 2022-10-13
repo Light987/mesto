@@ -8,8 +8,8 @@ const profilePopup = document.querySelector('.profile-popup')
 const popupForm = profilePopup.querySelector('.popup__form')
 const popupAdd = document.querySelector('.popup-add')
 const addPopupForm = popupAdd.querySelector('.popup-add__form')
-const input_name = popupForm.querySelector('.popup__field_name');
-const input_about = popupForm.querySelector('.popup__field_about');
+const inputName = popupForm.querySelector('.popup__field_name');
+const inputAbout = popupForm.querySelector('.popup__field_about');
 const inputElementTitle = addPopupForm.querySelector('.popup-add__title');
 const inputElementLink = addPopupForm.querySelector('.popup-add__link');
 const closeButtonElement = popupAdd.querySelector('.popup-add__close-button');
@@ -62,22 +62,22 @@ zoomCloseImage.addEventListener('click', () => closePopup(zoomImage))
 closeButton.addEventListener('click', () => closePopup(profilePopup))
 
 
-function profileOpenPopup() {
+function openProfilePopup() {
     openPopup(profilePopup);
 
-    input_name.value = profileName.textContent
-    input_about.value = profileAbout.textContent
+    inputName.value = profileName.textContent
+    inputAbout.value = profileAbout.textContent
 }
 
 
-editButton.addEventListener('click', profileOpenPopup)
+editButton.addEventListener('click', openProfilePopup)
 
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault()
 
-    profileName.textContent = input_name.value
-    profileAbout.textContent = input_about.value
+    profileName.textContent = inputName.value
+    profileAbout.textContent = inputAbout.value
 }
 
 popupForm.addEventListener('submit', handleProfileFormSubmit)
