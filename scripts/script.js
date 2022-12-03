@@ -14,10 +14,13 @@ const inputElementTitle = addPopupForm.querySelector('.popup-add__title');
 const inputElementLink = addPopupForm.querySelector('.popup-add__link');
 const closeButtonElement = popupAdd.querySelector('.popup-add__close-button');
 const closeButton = profilePopup.querySelector('.popup__close-button');
+const closeOverlayAdd = document.querySelector('.popup-add__overlay')
+const closeOverlay = document.querySelector('.popup__overlay')
+const closeOverlayImage = document.querySelector('.popup-image__overlay')
 
 
-const addElementButton = document.querySelector('.profile__add-button')
-const elementList = document.querySelector('.elements__list')
+const addElementButton = document.querySelector('.profile__add-button');
+const elementList = document.querySelector('.elements__list');
 
 const zoomImage = document.querySelector('.popup-image');
 const zoomCloseImage = zoomImage.querySelector('.popup-image__close-button');
@@ -47,19 +50,33 @@ const initialCards = [{
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
 }];
 
+function closePopupByEsc(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEsc);
 };
+
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.addEventListener('keydown', closePopupByEsc);
 }
+
 
 addElementButton.addEventListener('click', () => openPopup(popupAdd))
 closeButtonElement.addEventListener('click', () => closePopup(popupAdd))
+closeOverlayAdd.addEventListener('mousedown', () => closePopup(popupAdd))
 zoomCloseImage.addEventListener('click', () => closePopup(zoomImage))
 closeButton.addEventListener('click', () => closePopup(profilePopup))
+closeOverlay.addEventListener('mousedown', () => closePopup(profilePopup))
+closeOverlayImage.addEventListener('mousedown', () => closePopup(zoomImage))
 
 
 function openProfilePopup() {
@@ -112,6 +129,7 @@ function createCard(link, name) {
     });
     return newItem;
 }
+
 
 initialCards.forEach((card) => {
     const newCard = createCard(card.link, card.name);

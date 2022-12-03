@@ -35,12 +35,16 @@
 </footer>
 
 <div class="popup profile-popup">
-    <form name="form" class="popup__form">
+    <form name="form" class="popup__form" novalidate>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <input type="text" name="name" placeholder="Имя" class="popup__field popup__field_name" required>
-        <div class="popup__line"></div>
-        <input type="text" name="about" placeholder="Описание" class="popup__field popup__field_about" required>
-        <div class="popup__line"></div>
+        <input type="text" name="name" placeholder="Имя" id="name-input" class="popup__field popup__field_name"
+               minlength="2"
+               maxlength="40" required>
+        <span class="name-input-error popup__field_error"></span>
+        <input type="text" name="about" placeholder="Описание" id="about-input" class="popup__field popup__field_about"
+               minlength="2"
+               maxlength="200" required>
+        <span class="about-input-error popup__field_error"></span>
         <button type="submit" class="popup__submit-button">Сохранить</button>
     </form>
     <button type="button" class="popup__close-button"></button>
@@ -48,13 +52,15 @@
 </div>
 
 <div class="popup popup-add">
-    <form name="form" class="popup__form popup-add__form">
+    <form name="form" class="popup__form popup-add__form" novalidate>
         <h2 class="popup__header popup-add__header">Новое место</h2>
-        <input type="text" name="title" placeholder="Название" class="popup__field popup-add__title" required>
-        <div class="popup__line popup-add__line"></div>
-        <input type="text" name="link" placeholder="Ссылка на картинку" class="popup__field popup-add__link"
+        <input type="text" name="title" placeholder="Название" id="title-input" class="popup__field popup-add__title"
+               minlength="2" maxlength="30" required>
+        <span class="title-input-error popup__field_error"></span>
+        <input type="url" name="link" placeholder="Ссылка на картинку" id="link-input"
+               class="popup__field popup-add__link"
                required>
-        <div class="popup__line popup-add__line"></div>
+        <span class="link-input-error popup__field_error"></span>
         <button type="submit" class="popup__submit-button popup-add__submit-button">Создать</button>
     </form>
     <button type="button" class="popup__close-button popup-add__close-button"></button>
@@ -83,5 +89,7 @@
 
 
 <script src="scripts/script.js"></script>
+<script src="./scripts/validate.js"></script>
+
 </body>
 </html>
