@@ -35,7 +35,7 @@
 </footer>
 
 <div class="popup profile-popup">
-    <form name="form" class="popup__form" novalidate>
+    <form name="form" class="popup__form popup-profile__form" novalidate>
         <h2 class="popup__header">Редактировать профиль</h2>
         <input type="text" name="name" placeholder="Имя" id="name-input" class="popup__field popup__field_name"
                minlength="2"
@@ -87,10 +87,9 @@
     <div class="popup__overlay popup-image__overlay"></div>
 </div>
 
-
-<script src="scripts/cards.js"></script>
-<script src="scripts/validate.js"></script>
-<script src="scripts/script.js"></script>
+<script type="module" src="scripts/index.js"></script>
+<script type="module" src="scripts/Card.js"></script>
+<script type="module" src="scripts/FormValidator.js"></script>
 
 </body>
 </html>
