@@ -39,7 +39,7 @@ const selectImage = {
 }
 
 new FormValidator(selectors, '.popup-add__form').enableValidation()
-new FormValidator(selectors, '.popup-profile__form').enableValidation()
+new FormValidator(selectors, '.popup-form__profile').enableValidation()
 
 function closePopupByEsc(evt) {
     if (evt.key === 'Escape') {
