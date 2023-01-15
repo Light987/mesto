@@ -1,5 +1,6 @@
-import {initialCards, Card} from './Card.js'
-import {selectors, FormValidator} from './FormValidator.js'
+import {initialCards, validationConfig} from './constants.js'
+import {Card} from './Card.js'
+import {FormValidator} from './FormValidator.js'
 
 // определяем переменные
 const profile = document.querySelector('.profile')
@@ -8,9 +9,9 @@ const profileName = profileInfo.querySelector('.profile-info__name')
 const profileAbout = profileInfo.querySelector('.profile-info__about')
 const profileButton = profileInfo.querySelector('.profile-info__edit-button')
 const profilePopup = document.querySelector('.profile-popup')
-const popupForm = profilePopup.querySelector('.popup__form')
-const popupFieldName = popupForm.querySelector('.popup__field_name');
-const popupFieldAbout = popupForm.querySelector('.popup__field_about');
+const popupProfileForm = profilePopup.querySelector('.popup__form_profile')
+const popupProfileFieldName = popupProfileForm.querySelector('.popup__field_name');
+const popupProfileFieldAbout = popupProfileForm.querySelector('.popup__field_about');
 const popupCloseButton = profilePopup.querySelector('.popup__close-button');
 const popupCloseOverlay = document.querySelector('.popup__overlay')
 
@@ -30,16 +31,19 @@ const zoomPopupTitle = zoomImage.querySelector('.popup-image__text');
 
 const elementList = document.querySelector('.elements__list');
 
-const selectImage = {
-    elm: zoomImage,
-    close: zoomCloseImage,
-    closeOverlay: popupImageCloseOverlay,
-    src: zoomPopupImage,
-    title: zoomPopupTitle
-}
 
-new FormValidator(selectors, '.popup-add__form').enableValidation()
-new FormValidator(selectors, '.popup__form_profile').enableValidation()
+const addFormValidator = new FormValidator(validationConfig, '.popup-add__form');
+const profileFormValidator = new FormValidator(validationConfig, '.popup__form_profile');
+
+addFormValidator.enableValidation();
+profileFormValidator.enableValidation();
+
+function handleOpenPopup(name, link) {
+    zoomPopupTitle.textContent = name;
+    zoomPopupImage.src = link;
+    zoomPopupImage.alt = name;
+    openPopup(zoomImage);
+}
 
 function closePopupByEsc(evt) {
     if (evt.key === 'Escape') {
@@ -66,13 +70,15 @@ popupAddCloseButton.addEventListener('click', () => closePopup(popupAdd))
 popupAddCloseOverlay.addEventListener('mousedown', () => closePopup(popupAdd))
 popupCloseButton.addEventListener('click', () => closePopup(profilePopup))
 popupCloseOverlay.addEventListener('mousedown', () => closePopup(profilePopup))
+zoomCloseImage.addEventListener('click', () => closePopup(zoomImage))
+popupImageCloseOverlay.addEventListener('mousedown', () => closePopup(zoomImage))
 
 
 function openProfilePopup() {
     openPopup(profilePopup);
 
-    popupFieldName.value = profileName.textContent
-    popupFieldAbout.value = profileAbout.textContent
+    popupProfileFieldName.value = profileName.textContent
+    popupProfileFieldAbout.value = profileAbout.textContent
 }
 
 
@@ -82,28 +88,35 @@ profileButton.addEventListener('click', openProfilePopup)
 function handleProfileFormSubmit(evt) {
     evt.preventDefault()
 
-    profileName.textContent = popupFieldName.value
-    profileAbout.textContent = popupFieldAbout.value
+    profileName.textContent = popupProfileFieldName.value
+    profileAbout.textContent = popupProfileFieldAbout.value
 }
 
-popupForm.addEventListener('submit', handleProfileFormSubmit)
+popupProfileForm.addEventListener('submit', handleProfileFormSubmit)
 
+function createCard(data) {
+    const card = new Card(data, '#element', handleOpenPopup);
+    return card.generateCard();
+}
 
 initialCards.forEach((data) => {
-    const card = new Card(data, '#element', selectImage);
-    const cardElement = card.generateCard();
-    elementList.append(cardElement);
+    elementList.append(createCard(data));
 });
 
 
 function handleElementFormSubmit(evt) {
     evt.preventDefault()
 
-    const addElement = new Card({
-        link: popupAddLink.value,
-        name: popupAddTitle.value
-    }, '#element', selectImage).generateCard();
+    const elementCard = {link: popupAddLink.value, name: popupAddTitle.value}
+    const addElement = createCard(elementCard)
+
     elementList.prepend(addElement);
+
+    closePopup(popupAdd)
+
+    createCard(elementCard, elementList);
+
+    popupAddForm.reset();
 }
 
 
