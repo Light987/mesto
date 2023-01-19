@@ -3,7 +3,7 @@ class Card {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this.handleOpenPopup = handleOpenPopup;
+        this._handleOpenPopup = handleOpenPopup;
     }
 
     _getTemplate() {
@@ -35,15 +35,15 @@ class Card {
     _setEventListener() {
 
         this._elementImage.addEventListener("click", () => {
-            this.handleOpenPopup(this._name, this._link);
+            this._handleOpenPopup(this._name, this._link);
         });
 
         this._elementLike.addEventListener("click", (evt) => {
             evt.target.classList.toggle("element__like_active");
         });
 
-        this._elementDelete.addEventListener("click", (evt) => {
-            evt.target.closest(".element").remove();
+        this._elementDelete.addEventListener("click", () => {
+            this._element.remove();
         });
     }
 }

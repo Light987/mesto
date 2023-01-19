@@ -1,18 +1,15 @@
 class FormValidator {
 
-    constructor(config, settingsObj) {
+    constructor(config, form) {
         this._config = config;
-        this._srttingsObj = settingsObj;
-        this._formElement = document.querySelector(this._srttingsObj);
-        this._inactiveButtonClass = this._config.inactiveButtonClass;
-        this._submitButtonSelector = this._config.submitButtonSelector;
-        this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
-        this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+        this._form = document.querySelector(form);
+        this._buttonElement = this._form.querySelector(this._config.submitButtonSelector);
+        this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
     }
 
     _showInputError(inputElement, errorMessage) {
         // Находим элемент ошибки внутри самой функции
-        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
         // Остальной код такой же
         inputElement.classList.add(this._config.inputErrorClass);
         errorElement.textContent = errorMessage;
@@ -21,7 +18,7 @@ class FormValidator {
 
     _hideInputError(inputElement) {
 
-        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
 
         inputElement.classList.remove(this._config.inputErrorClass);
         errorElement.classList.remove(this._config.errorClass);
@@ -36,8 +33,8 @@ class FormValidator {
         }
     };
 
-    _hasInvalidInput(inputList) {
-        return inputList.some((inputElement) => {
+    _hasInvalidInput() {
+        return this._inputList.some((inputElement) => {
 
             return !inputElement.validity.valid;
         })
@@ -49,8 +46,7 @@ class FormValidator {
             this._buttonElement.classList.add(this._config.inactiveButtonClass);
             this._buttonElement.setAttribute('disabled', true);
         } else {
-            this._buttonElement.classList.remove(this._config.inactiveButtonClass);
-            this._buttonElement.removeAttribute("disabled");
+            this.disableSubmitButton()
         }
     };
 
@@ -71,6 +67,10 @@ class FormValidator {
         this._setEventListeners();
     };
 
+    disableSubmitButton() {
+        this._buttonElement.classList.remove(this._config.inactiveButtonClass);
+        this._buttonElement.disabled = false;
+    }
 }
 
 

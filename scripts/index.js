@@ -117,6 +117,7 @@ function handleElementFormSubmit(evt) {
     createCard(elementCard, elementList);
 
     popupAddForm.reset();
+    addFormValidator.disableSubmitButton()
 }
 
 
