@@ -32,8 +32,8 @@ const zoomPopupTitle = zoomImage.querySelector('.popup-image__text');
 const elementList = document.querySelector('.elements__list');
 
 
-const addFormValidator = new FormValidator(validationConfig, '.popup-add__form');
-const profileFormValidator = new FormValidator(validationConfig, '.popup__form_profile');
+const addFormValidator = new FormValidator(validationConfig, popupAddForm);
+const profileFormValidator = new FormValidator(validationConfig, popupProfileForm);
 
 addFormValidator.enableValidation();
 profileFormValidator.enableValidation();
