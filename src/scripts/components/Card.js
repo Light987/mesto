@@ -1,9 +1,9 @@
 class Card {
-    constructor(data, templateSelector, handleOpenPopup) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._handleOpenPopup = handleOpenPopup;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -21,7 +21,6 @@ class Card {
         this._elementTitle = this._element.querySelector('.element__title');
         this._elementLike = this._element.querySelector('.element__like');
         this._elementDelete = this._element.querySelector('.element__delete');
-
         this._setEventListener();
 
 
@@ -35,7 +34,7 @@ class Card {
     _setEventListener() {
 
         this._elementImage.addEventListener("click", () => {
-            this._handleOpenPopup(this._name, this._link);
+            this._handleCardClick(this._name, this._link);
         });
 
         this._elementLike.addEventListener("click", (evt) => {
