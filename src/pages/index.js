@@ -148,9 +148,9 @@ enableValidation(validationConfig);
 profileButton.addEventListener('click', () => {
     popupEditProfile.open()
     const userData = userInfo.getUserInfo();
-    popupEditProfile._getInputValues({
-        'name-input': userData.name,
-        'about-input': userData.info,
+    popupEditProfile.setInput({
+        'name': userData.name,
+        'about': userData.info,
     });
     formValidators['form'].resetValidation();
 });
