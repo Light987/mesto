@@ -5,8 +5,8 @@ export default class Section {
         this._container = containerSelector;
     }
 
-    addItem(items) {
-        this._container.prepend(this._renderer(items));
+    addItem(items, prependCondition) {
+        prependCondition ? this._container.prepend(this._renderer(items)) : this._container.append(this._renderer(items))
     }
 
     clear() {

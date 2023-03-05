@@ -41,7 +41,7 @@ class Card {
         if (this._likes.find((item) => {
             return this._userId === item._id;
         })) {
-            this._elementLike = this._element.querySelector('.element__like');
+            this._elementLike.classList.add('element__like_active');
         }
 
         this._setEventListener();

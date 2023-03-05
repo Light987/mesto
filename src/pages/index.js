@@ -33,7 +33,7 @@ const handleCardFormSubmit = (evt, data) => {
     api.postCard({name: data['name'], link: data['link']})
         .then(
             (res) => {
-                cardsSection.addItem(res);
+                cardsSection.addItem(res, true);
                 popupAddCard.close();
             })
         .catch((err) => {
